@@ -1,0 +1,47 @@
+@if(character()){
+    <article class="web-snap-card">
+        <img [src]="character()?.image" [alt]="character()?.name" /> 
+        <h2>
+            {{character()?.name | uppercase}}
+        </h2>
+        <p>
+            {{character()?.status}} - {{character()?.species}}
+        </p>
+        <div>
+            <label for="location"> Last know location:</label>
+            <a name="location" (href)="character()?.location?.url">
+                {{character()?.location?.name}}
+            </a>  
+        </div>
+        <div>
+            <label for="first-seen">First seen in:</label>
+            <a name="first-seen" (href)="character()?.origin?.url">
+                {{character()?.origin?.name}}
+            </a>  
+        </div>
+
+        <p>
+            Liste des épisodes où le personnage apparaît:
+        </p>
+        <ul>
+            @for(episode of character()?.episode; track idx; let idx = $index){
+            <li>
+                {{episode}}
+            </li>
+            }
+        </ul>
+        <p>
+            Crée le : {{character()?.created}}
+        </p>
+    </article>
+  }
+  @else{
+    <article class="web-snap-card">
+      <h2>
+        Erreur
+      </h2>
+      <p>
+        Le composant personnages a été invoqué sans données !
+      </p>
+    </article>
+  }

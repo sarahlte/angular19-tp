@@ -1,0 +1,27 @@
+<article class="web-snap-card">
+    <img [src]="character.image" [alt]="character.name" /> 
+    <h2>
+        {{character.name | uppercase}}
+    </h2>
+    <p>
+        {{character.status}} - {{character.species}}
+    </p>
+    <div>
+        <label for="location"> Last know location:</label>
+        <a name="location" (href)="character.location.url">
+            {{character.location.name}}
+        </a>  
+    </div>
+    <div>
+        <label for="first-seen">First seen in:</label>
+        <a name="first-seen" (href)="character.origin.url">
+            {{character.origin.name}}
+        </a>  
+    </div>
+
+    @if(character.id){
+      <button (click)="onShowCharacter(character.id)">
+        Voir le personnage
+      </button>
+    }
+</article>
