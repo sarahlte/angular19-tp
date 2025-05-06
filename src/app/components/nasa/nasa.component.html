@@ -1,0 +1,23 @@
+@if(nasa()){
+    <section>
+        <h2>{{nasa()?.title}}</h2> 
+        <p>{{nasa()?.date}}</p>
+        <p>{{nasa()?.explanation}}</p>
+        @if(nasa()?.media_type == "image"){
+            <img [src]="nasa()?.url" alt="">
+        }
+        @else if (nasa()?.media_type == "video") {
+            <iframe width="560" height="315" 
+                [src]="url()"
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        }
+    </section>
+}
+@else {
+    <p>It doesn't work ! </p>
+}
+

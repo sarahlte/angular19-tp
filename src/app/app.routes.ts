@@ -5,6 +5,7 @@ import { authRoutes } from './routes/auth.routes';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharacterComponent } from './components/character/character.component'
+import { NasaComponent } from './components/nasa/nasa.component';
 
 const appTitle = "TpApp";
 
@@ -20,6 +21,12 @@ export const routes: Routes = [
     title: `Liste des personnages - ${appTitle}`,
     canActivate: [AuthGuard],
     loadComponent: () => import("./components/character-list/character-list.component").then(m => m.CharacterListComponent)
+  },
+  {
+    path:"nasa",
+    title: `Retour api NASA - ${appTitle}`,
+    canActivate: [AuthGuard],
+    loadComponent: () => import("./components/nasa/nasa.component").then(m => m.NasaComponent)
   },
   {
     path:"characters/character/:id",
